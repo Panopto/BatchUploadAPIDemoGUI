@@ -1,0 +1,63 @@
+﻿<Window x:Class="BatchUploadAPIDemoGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Batch Upload API Demo" Height="603.6" Width="550" Icon="Logo-PanoptoGlobe.png" ResizeMode="CanMinimize">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="APIDemoResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button"
+                   x:Key="ChosenButton"
+                   BasedOn="{StaticResource BaseChosenButton}">
+                <EventSetter Event="Click" Handler="Delete_Click"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border BorderBrush="#FF259216" BorderThickness="3">
+        <Grid Margin="0,0,0,0">
+            <GroupBox BorderBrush="LightBlue" Header="Upload Destination" VerticalAlignment="Top" Margin="5,0" BorderThickness="2.5" >
+                <Grid>
+                    <TextBox x:Name="Server" HorizontalAlignment="Left" Margin="134,10,0,0" TextWrapping="Wrap" Text="foo.bar.com" VerticalAlignment="Top" Width="271" Height="25"/>
+                    <Label Content="Server:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30"/>
+                    <Label Content="User Name:" HorizontalAlignment="Left" Height="30" Margin="10,45,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.5,0.5"/>
+                    <TextBox x:Name="UserID" HorizontalAlignment="Left" Margin="134,45,0,0" TextWrapping="Wrap" Text="Foo" VerticalAlignment="Top" Width="271" Height="25"/>
+                    <Label Content="Password:" HorizontalAlignment="Left" Height="30" Margin="10,80,0,0" VerticalAlignment="Top" Width="65"/>
+                    <PasswordBox x:Name="UserPassword" HorizontalAlignment="Left" Height="25" Margin="134,80,0,0" VerticalAlignment="Top" Width="271" Password="Bar"/>
+                    <Label Content="Folder ID:" HorizontalAlignment="Left" Height="30" Margin="10,115,0,0" VerticalAlignment="Top" Width="74"/>
+                    <TextBox x:Name="FolderID" HorizontalAlignment="Left" Height="25" Margin="134,115,0,0" TextWrapping="Wrap" Text="foo-bar" VerticalAlignment="Top" Width="271"/>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox BorderBrush="LightBlue" Header="Upload Source" VerticalAlignment="Top" Margin="5,185,5,0" BorderThickness="2.5">
+                <Grid>
+                    <Label Content="Upload Mode:" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="89"/>
+                    <RadioButton x:Name="HTTP" Content="HTTP" HorizontalAlignment="Left" Height="21" Margin="134,15,0,0" VerticalAlignment="Top" Width="52" Checked="FileLocation_Checked"/>
+                    <RadioButton x:Name="FTP" Content="FTP" HorizontalAlignment="Left" Height="21" Margin="191,15,0,0" VerticalAlignment="Top" Width="44" Checked="FileLocation_Checked"/>
+                    <RadioButton x:Name="Disk" Content="Disk and Network" HorizontalAlignment="Left" Height="21" Margin="240,15,0,0" VerticalAlignment="Top" Width="115" Checked="FileLocation_Checked"/>
+
+                    <Label x:Name="SourceIDLabel" Content="User Name:" HorizontalAlignment="Left" Height="30" Margin="10,45,0,0" VerticalAlignment="Top" Width="89" Visibility="Hidden"/>
+                    <TextBox x:Name="FileSourceID" HorizontalAlignment="Left" Height="25" Margin="134,45,0,0" TextWrapping="Wrap" Text="Bar" VerticalAlignment="Top" Width="271" IsEnabled="False" Visibility="Hidden"/>
+                    <Label x:Name="SourceKeyLabel" Content="Password:" HorizontalAlignment="Left" Height="30" Margin="10,80,0,0" VerticalAlignment="Top" Width="89" Visibility="Hidden"/>
+                    <PasswordBox x:Name="FileSourceKey" HorizontalAlignment="Left" Height="25" Margin="134,80,0,0" VerticalAlignment="Top" Width="271" Password="foo" IsEnabled="False" Visibility="Hidden"/>
+
+                    <Label x:Name="SourceFileLabel" Content="File:" HorizontalAlignment="Left" Height="30" Margin="10,115,0,0" VerticalAlignment="Top" Width="35" Visibility="Hidden"/>
+                    <TextBox x:Name="FileInput" HorizontalAlignment="Left" Height="25" Margin="134,115,0,0" TextWrapping="Wrap" Text="Somefile.mp4" VerticalAlignment="Top" Width="271" IsEnabled="False" Visibility="Hidden"/>
+                    <Button x:Name="Browse" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="74" Margin="410,115,0,0" Content="Browse" Visibility="Hidden"/>
+
+                    <ScrollViewer x:Name="ChosenFileViewer" HorizontalAlignment="Left" Height="122" Margin="134,150,0,0" VerticalAlignment="Top" Width="350" Visibility="Hidden">
+                        <StackPanel x:Name="Files" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </GroupBox>
+
+            <Button x:Name="Upload" Content="Upload" HorizontalAlignment="Left" Height="29" Margin="200,490,0,0" VerticalAlignment="Top" Width="121" Click="Upload_Click"/>
+            <StatusBar x:Name="StatusBar" Height="35" Margin="0,282,0,0" VerticalAlignment="Bottom">
+                <Label x:Name="Status" Content="Ready to upload"/>
+            </StatusBar>
+        </Grid>
+    </Border>
+</Window>

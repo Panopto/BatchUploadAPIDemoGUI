@@ -1,0 +1,16 @@
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\bin\Release\BatchUploadAPIDemoGUI.exe.config
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\bin\Release\BatchUploadAPIDemoGUI.exe
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\bin\Release\BatchUploadAPIDemoGUI.pdb
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\bin\Release\AWSSDK.dll
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\bin\Release\AWSSDK.xml
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\obj\Release\APIDemoResources.baml
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\obj\Release\MainWindow.baml
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\obj\Release\APIDemoResources.g.cs
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\obj\Release\MainWindow.g.cs
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\obj\Release\App.g.cs
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\obj\Release\BatchUploadAPIDemoGUI_MarkupCompile.cache
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\obj\Release\BatchUploadAPIDemoGUI.g.resources
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\obj\Release\BatchUploadAPIDemoGUI.Properties.Resources.resources
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\obj\Release\BatchUploadAPIDemoGUI.csproj.GenerateResource.Cache
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\obj\Release\BatchUploadAPIDemoGUI.exe
+C:\Users\dliu\Documents\Visual Studio 2012\Projects\BatchUploadAPIDemoGUI\BatchUploadAPIDemoGUI\obj\Release\BatchUploadAPIDemoGUI.pdb

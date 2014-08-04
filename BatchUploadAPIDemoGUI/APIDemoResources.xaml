@@ -1,0 +1,90 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="BatchUploadAPIDemoGUI.APIDemoResources">
+    <!-- Selected file text box style -->
+    <Style TargetType="TextBox"
+           x:Key="ChosenTextBox">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="271"/>
+        <Setter Property="IsEnabled" Value="False"/>
+    </Style>
+    
+    <!-- Selected file delete button style -->
+    <Style TargetType="Button"
+           x:Key="BaseChosenButton">
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Transparent"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="DeleteRed.png"/>
+            </Setter.Value>
+        </Setter>
+        
+        <!-- New template for mouse over effects control -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border"
+                            BorderThickness="1"
+                            BorderBrush="Transparent"
+                            CornerRadius="3"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="DeleteRed.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="border" Property="BorderBrush" Value="Red"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="DeleteGrey.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="border" Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Cursor" Value="Arrow"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Selected file text box and button wrapper style -->
+    <Style TargetType="WrapPanel"
+           x:Key="ChosenWrapPanel">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+    
+    <!-- Individual upload file's status box style-->
+    <Style TargetType="Label"
+           x:Key="SingleStatus">
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="FontSize" Value="10"/>
+    </Style>
+    
+    <!-- Selected file text, button, and status wrapper style -->
+    <Style TargetType="StackPanel"
+           x:Key="SingleFileGroup">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+</ResourceDictionary>
