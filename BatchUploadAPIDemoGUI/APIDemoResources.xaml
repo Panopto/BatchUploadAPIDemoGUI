@@ -62,7 +62,39 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <!-- Selected file upload successful button style -->
+    <Style TargetType="Button"
+           x:Key="CheckButton">
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Transparent"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="CheckGreen.png"/>
+            </Setter.Value>
+        </Setter>
+
+        <!-- New template for mouse over effects control -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border"
+                            BorderThickness="1"
+                            BorderBrush="Transparent"
+                            CornerRadius="3"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!-- Selected file text box and button wrapper style -->
     <Style TargetType="WrapPanel"
            x:Key="ChosenWrapPanel">

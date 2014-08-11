@@ -28,8 +28,10 @@ namespace BatchUploadAPIDemoGUI
         private static bool selfSigned = true; // Target server is a self-signed server
         private static bool hasBeenInitialized = false;
         private static long DEFAULT_PARTSIZE = 1048576; // Size of each upload in the multipart upload process
+        private static string extensionString = ".avi;.asf;.wmv;.mpg;.mpeg;.ps;.ts;.m2v;.mp2;.mod;.mp4;.m4v;.mov;.qt;.3gp;.flv;.f4v;.mp3;.wma;.m2a;.m4a;.f4a"; // File types allowed for upload
         private static System.Timers.Timer timer;
         private static string fileLocationType = "none";
+        private static System.Collections.ArrayList successfulUploads = new System.Collections.ArrayList();
 
         public MainWindow()
         {
@@ -50,7 +52,10 @@ namespace BatchUploadAPIDemoGUI
             OpenFileDialog dlg = new OpenFileDialog();
 
             dlg.DefaultExt = ".mp4";
-            dlg.Filter = "MP4 File (.mp4)|*.mp4";
+            dlg.Filter = "All Media Types (*.avi, *.asf, *.wmv, *.mpg, *.mpeg, *.ps, *.ts, *.m2v, *.mp2, *.mod, "
+                       + "*.mp4, *.m4v, *.mov, *.qt, *.3gp, *.flv, *.f4v, *.mp3, *.wma, *.m2a, *.m4a, *.f4a)|*.avi;"
+                       + "*.asf;*.wmv;*.mpg;*.mpeg;*.ps;*.ts;*.m2v;*.mp2;*.mod;*.mp4;*.m4v;*.mov;*.qt;*.3gp;*.flv;*.f4v;"
+                       + "*.mp3;*.wma;*.m2a;*.m4a;*.f4a";
             dlg.Multiselect = true;
 
             DialogResult result = dlg.ShowDialog();
@@ -194,6 +199,9 @@ namespace BatchUploadAPIDemoGUI
                     string fileName = RemoteFileAccess.GetFileName(filePath);
                     string actualFilePath = GetTempFilePath(filePath, args[4] as string, args[5] as string);
 
+                    string[] fileNameSplit = fileName.Split('.');
+                    FileTypeCheck("." + fileNameSplit[fileNameSplit.Length - 1]);
+
                     UploadAPIWrapper.UploadFile(
                         args[1] as string,
                         args[2] as string,
@@ -253,6 +261,14 @@ namespace BatchUploadAPIDemoGUI
             {
                 System.Windows.Controls.Label singleStatus = (Files.Children[index] as StackPanel).Children[1] as System.Windows.Controls.Label;
                 singleStatus.Content = msg;
+
+                if (msg.Equals("Upload Successful"))
+                {
+                    System.Windows.Controls.Button button = ((Files.Children[index] as StackPanel).Children[0] as System.Windows.Controls.WrapPanel).Children[1] as System.Windows.Controls.Button;
+                    button.Style = (Style)this.Resources["CheckButton"];
+
+                    successfulUploads.Add(index);
+                }
             }
         }
 
@@ -263,6 +279,13 @@ namespace BatchUploadAPIDemoGUI
         /// <param name="e">Arguments to be used</param>
         private void UploadComplete(object sender, RunWorkerCompletedEventArgs e)
         {
+            for (int i = successfulUploads.Count - 1; i >= 0; i--)
+            {
+                int index = (int) successfulUploads[i];
+                Files.Children.RemoveAt(index);
+            }
+            successfulUploads.Clear();
+
             FreeAllFields();
         }
 
@@ -340,6 +363,25 @@ namespace BatchUploadAPIDemoGUI
             }
 
             fileLocationType = newType;
+        }
+
+        /// <summary>
+        /// Checks if file extension given is part of legal extensions
+        /// </summary>
+        /// <param name="fileExt">Extension of file to check</param>
+        private void FileTypeCheck(string fileExt)
+        {
+            string[] extensions = extensionString.Split(';');
+
+            foreach (string ext in extensions)
+            {
+                if (ext.Equals(fileExt))
+                {
+                    return;
+                }
+            }
+
+            throw new System.IO.InvalidDataException("File Type Not Supported");
         }
 
         /// <summary>
