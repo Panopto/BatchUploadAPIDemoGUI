@@ -199,8 +199,7 @@ namespace BatchUploadAPIDemoGUI
                     string fileName = RemoteFileAccess.GetFileName(filePath);
                     string actualFilePath = GetTempFilePath(filePath, args[4] as string, args[5] as string);
 
-                    string[] fileNameSplit = fileName.Split('.');
-                    FileTypeCheck("." + fileNameSplit[fileNameSplit.Length - 1]);
+                    FileTypeCheck(fileName);
 
                     UploadAPIWrapper.UploadFile(
                         args[1] as string,
@@ -366,18 +365,24 @@ namespace BatchUploadAPIDemoGUI
         }
 
         /// <summary>
-        /// Checks if file extension given is part of legal extensions
+        /// Checks if file given has extension that is part of legal extensions
         /// </summary>
-        /// <param name="fileExt">Extension of file to check</param>
-        private void FileTypeCheck(string fileExt)
+        /// <param name="fileName">File to check</param>
+        private static void FileTypeCheck(string fileName)
         {
             string[] extensions = extensionString.Split(';');
+            string[] fileNameSplit = fileName.Split('.');
 
-            foreach (string ext in extensions)
+            if (fileNameSplit.Length > 1)
             {
-                if (ext.Equals(fileExt))
+                string fileExt = "." + fileNameSplit[fileNameSplit.Length - 1];
+
+                foreach (string ext in extensions)
                 {
-                    return;
+                    if (ext.Equals(fileExt))
+                    {
+                        return;
+                    }
                 }
             }
 
